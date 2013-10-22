@@ -37,16 +37,20 @@
 
         <h1>City Search Box.js</h1>
 
-      <form class="form-signin">
-        <input type="search" id="search" name="search" placeholder="City Search Box..." autofocus="" required="" >
-          <button type="submit">
-              <i class="icon-search"></i>
-          </button>
+		<form class="form-signin">
+			
+			<button type="submit">
+				<i class="icon-search"></i>
+			</button>
 
-          <button type="reset" id="cityClearSearch" class="hide">
-              <label for="search">&times</label>
-          </button>
-      </form>
+			<button type="reset" id="cityClearSearch" class="hide">
+				<label for="search">&times</label>
+			</button>
+			
+			<input type="search" id="search" name="search" placeholder="City Search Box..." autofocus="" required="">
+			
+			<a href="#geo" id="geo"> <i class="icon-screenshot"></i> Lieu actuel/Current location </a>
+		</form>
 
           <div id="map-html"></div>
 

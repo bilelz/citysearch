@@ -24,7 +24,7 @@ input[type=search]:focus::-webkit-input-placeholder{
 
 *[type=submit], #cityClearSearch{
     float: right;
-    top: -50px;
+    bottom: -40px;
     position: relative;
     right: -10px;
     font-size: 22px;
@@ -65,4 +65,60 @@ input[type=search]:focus::-webkit-input-placeholder{
 
 .removeCityList button{
     font-size: 30px;
+}
+
+#geo {
+
+	border: 1px solid #CCC;
+	width: 100%;
+	padding: 4px 6px;
+	background: white;
+	color: black;
+	height: 32px;
+	line-height: 32px;
+	text-decoration: none;
+	margin: 0 auto;
+	margin-top: -8px;
+	border-top: 0;
+	bottom: 2px;
+	z-index: 1;
+	position: relative;
+	display: none;
+	-webkit-box-shadow: 0px 3px 5px #bbbbbb;
+	-moz-box-shadow: 0px 3px 5px #bbbbbb;
+	box-shadow: 0px 3px 5px #bbbbbb;
+	-webkit-transition: all .3s;
+	-moz-transition: all .3s;
+	transition: all .3s;
+}
+
+
+a#geo:hover{
+	background-color: #EEEEEE;
+	display:block;
+}
+
+#search:focus + #geo{
+	display: block;
+}
+
+
+#geo i{
+	font-size: 24px;
+	line-height: 10px;
+}
+
+
+/* google autocomplete */
+
+.pac-container{
+	margin-top: 40px;
+	-webkit-box-shadow: 0px 3px 5px #bbbbbb;
+	   -moz-box-shadow: 0px 3px 5px #bbbbbb;
+	        box-shadow: 0px 3px 5px #bbbbbb;		
+}
+
+.pac-item {
+	padding: 7px;
+	border-bottom: 1px solid #EEEEEE;
 }

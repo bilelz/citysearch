@@ -257,3 +257,31 @@ function getLatlngFromCityGoogle(_city) {
 
 }
 
+function getCityFromCoord(lat, lng) {
+	var latlng = new google.maps.LatLng(lat, lng);
+
+	// if(geocoder == null) {
+		// geocoder = new google.maps.Geocoder();
+	// }
+
+var geocoder = new google.maps.Geocoder();
+	geocoder.geocode({
+		'latLng' : latlng
+	}, function(results, status) {
+		if(status == google.maps.GeocoderStatus.OK) {
+			if(results[1]) {
+				updateMap(results[0].formatted_address, lat, lng);
+
+			} else {
+				info("Aucune nom de ville trouvé.");
+				updateMap(lat+","+lng, lat, lng);
+
+				/* No results found*/
+			}
+		} else {
+			info("Aucune nom de ville trouvé. (" + status + ")");
+			updateMap(lat+","+lng, lat, lng);
+			/* "Geocoder failed due to: " + status*/
+		}
+	});
+}

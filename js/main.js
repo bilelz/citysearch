@@ -24,6 +24,61 @@ $(document).ready(function() {
     });
 
 
+	/* geo localisation */
+	
+	// script for print geo link when focus in searchbox
+	// $("#search").focus(function() {
+		// $("#geo").addClass("show");
+	// });	
+	// $("#search").blur(function() {
+		// $("#geo").removeClass("show");
+	// });
+
+	$("#geo").click(function(e) {
+		$("#geo").removeClass("show");
+		$("#container").removeClass("blur");
+
+		infoGeo("Géolocalisation en cours ...");
+		if(navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+		} else {
+			infoGeo("Votre navigateur ne prend pas en compte la géolocalisation HTML5");
+		}
+
+		function successCallback(position) {
+			
+			getCityFromCoord(position.coords.latitude, position.coords.longitude);
+			
+			infoGeo("Géolocalisation réussie :-)");
+			infoHide();			
+		};
+
+		function errorCallback(error) {
+			// if(getStorage("lastId") != undefined){
+				// id = getStorage("lastId");
+			// }else{		
+				// id = "2988507" // Paris;
+			// }			
+			// getWeatherById(id);
+			
+			switch(error.code) {
+				case error.PERMISSION_DENIED:
+					infoGeo("L'utilisateur n'a pas autorisé l'accès à sa position");
+					break;
+				case error.POSITION_UNAVAILABLE:
+					infoGeo("L'emplacement de l'utilisateur n'a pas pu être déterminé");
+					break;
+				case error.TIMEOUT:
+					infoGeo("Le service n'a pas répondu à temps");
+					break;
+			}			
+		};
+		
+		return false;
+	});
+	
+	/* geo localisation */
+
     /* print on not  #cityClearSearch button */
     $("#search").keyup(function() {
         if ($.trim($(this).val()) != "") {
